@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../models/team.dart';
 import '../models/fixture.dart';
 import './fixture_betting.dart';
 
 class FixtureList extends StatelessWidget {
   final Function _betFixture;
-  // final List<Team> teams;
   final List<Fixture> fixtures;
 
   FixtureList(

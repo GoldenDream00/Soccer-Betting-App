@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import '../models/team.dart';
 import '../models/fixture.dart';
 
 class FixtureBetting extends StatefulWidget {
@@ -75,9 +74,15 @@ class _FixtureBettingState extends State<FixtureBetting> {
                       height: 140,
                       width: 140,
                       decoration: BoxDecoration(
-                          border: Border.all(width: 3),
-                          borderRadius: BorderRadius.circular(30)),
-                      child: Text('LOGO'),
+                          border: Border.all(width: 2),
+                          borderRadius: BorderRadius.circular(45)),
+                      child: Container(
+                        margin: EdgeInsets.all(8),
+                        child: Image.asset(
+                          widget.fixture.homeTeam.logoImagePath,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       alignment: Alignment.center,
                     ),
                     Text(
@@ -107,9 +112,15 @@ class _FixtureBettingState extends State<FixtureBetting> {
                       height: 140,
                       width: 140,
                       decoration: BoxDecoration(
-                          border: Border.all(width: 3),
-                          borderRadius: BorderRadius.circular(30)),
-                      child: Text('LOGO'),
+                          border: Border.all(width: 2),
+                          borderRadius: BorderRadius.circular(45)),
+                      child: Container(
+                        margin: EdgeInsets.all(8),
+                        child: Image.asset(
+                          widget.fixture.awayTeam.logoImagePath,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       alignment: Alignment.center,
                     ),
                     Text(
@@ -127,7 +138,7 @@ class _FixtureBettingState extends State<FixtureBetting> {
           TextField(
             decoration: InputDecoration(
               labelText: 'Place your bet and click Type',
-              hintText: 'Type \'HOME\', \'AWAY\' or \'DRAW\'',  //doesn't work
+              hintText: 'Type \'HOME\', \'AWAY\' or \'DRAW\'', //doesn't work
             ),
             controller: _pickController,
             onSubmitted: (data) => _submitBet(data, widget.fixture),

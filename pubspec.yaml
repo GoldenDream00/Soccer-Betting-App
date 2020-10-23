@@ -45,9 +45,27 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/arsenal.png
+    - assets/images/astonvilla.png
+    - assets/images/burnley.png
+    - assets/images/chelsea.png
+    - assets/images/crystal.png
+    - assets/images/everton.png
+    - assets/images/fulham.png
+    - assets/images/leeds.png
+    - assets/images/leicester.png
+    - assets/images/liverpool.png
+    - assets/images/manchestercity.png
+    - assets/images/manchesterunited.png
+    - assets/images/newcastle.png
+    - assets/images/sheffield.png
+    - assets/images/southampton.png
+    - assets/images/tottenham.png
+    - assets/images/westbromwich.png
+    - assets/images/westham.png
+    - assets/images/wolverhampton.png
+    - assets/images/brighton.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
