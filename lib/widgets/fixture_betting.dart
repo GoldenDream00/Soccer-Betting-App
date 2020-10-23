@@ -61,15 +61,79 @@ class _FixtureBettingState extends State<FixtureBetting> {
       height: 500,
       child: Column(
         children: [
-          Text(
-              'Home team: ${widget.fixture.homeTeam.fullName}\n Away team: ${widget.fixture.awayTeam.fullName}'),
+          Row(
+            children: [
+              Expanded(
+                flex: 5,
+                child: Column(
+                  children: [
+                    Text(
+                      'Home team',
+                      textAlign: TextAlign.center,
+                    ),
+                    Container(
+                      height: 140,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 3),
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Text('LOGO'),
+                      alignment: Alignment.center,
+                    ),
+                    Text(
+                      '${widget.fixture.homeTeam.fullName}',
+                      textAlign: TextAlign.center,
+                    )
+                  ],
+                ),
+              ),
+              Flexible(
+                fit: FlexFit.tight,
+                flex: 1,
+                child: Text(
+                  'VS',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: Column(
+                  children: [
+                    Text(
+                      'Away team',
+                      textAlign: TextAlign.center,
+                    ),
+                    Container(
+                      height: 140,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          border: Border.all(width: 3),
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Text('LOGO'),
+                      alignment: Alignment.center,
+                    ),
+                    Text(
+                      '${widget.fixture.awayTeam.fullName}',
+                      textAlign: TextAlign.center,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 25,
+          ),
           TextField(
             decoration: InputDecoration(
-              labelText:
-                  'Place your bet. Type \'HOME\', \'AWAY\' or \'DRAW\' and click Type',
+              labelText: 'Place your bet and click Type',
+              hintText: 'Type \'HOME\', \'AWAY\' or \'DRAW\'',  //doesn't work
             ),
             controller: _pickController,
             onSubmitted: (data) => _submitBet(data, widget.fixture),
+          ),
+          SizedBox(
+            height: 25,
           ),
           RaisedButton(
             onPressed: () => _submitBet(_pickController.text, widget.fixture),
