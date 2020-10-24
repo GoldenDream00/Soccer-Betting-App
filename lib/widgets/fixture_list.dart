@@ -35,17 +35,32 @@ class FixtureList extends StatelessWidget {
             child: !fixtures[index].isFinished
                 ? ListTile(
                     leading: Text('PL'),
-                    title: Text(
-                      '${fixtures[index].homeTeam.shortName} VS ${fixtures[index].awayTeam.shortName}',
-                      textAlign: TextAlign.center,
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${fixtures[index].homeTeam.shortName}',
+                          style: Theme.of(context).textTheme.headline4,
+                        ),
+                        Text(' vs '),
+                        Text(
+                          '${fixtures[index].awayTeam.shortName}',
+                          style: Theme.of(context).textTheme.headline4,
+                        ),
+                      ],
                     ),
-                    trailing: RaisedButton.icon(
-                      onPressed: () =>
-                          _startBettingFixture(context, fixtures[index]),
-                      icon: Icon(
-                        Icons.sports_soccer,
+                    trailing: Container(
+                      width: 100,
+                      child: RaisedButton.icon(
+                        onPressed: () => _startBettingFixture(
+                          context,
+                          fixtures[index],
+                        ),
+                        icon: Icon(
+                          Icons.sports_soccer,
+                        ),
+                        label: Text('BET'),
                       ),
-                      label: Text('BET'),
                     ),
                   )
                 : ListTile(
@@ -55,25 +70,26 @@ class FixtureList extends StatelessWidget {
                       children: [
                         Text(
                           '${fixtures[index].homeTeam.shortName}',
-                          style: TextStyle(
-                              fontWeight: fixtures[index].homeTeam.hasWon
-                                  ? FontWeight.bold
-                                  : FontWeight.normal),
+                          style: fixtures[index].homeTeam.hasWon
+                              ? Theme.of(context).textTheme.headline5
+                              : Theme.of(context).textTheme.headline4,
                         ),
-                        Text(' VS '),
+                        Text(' vs '),
                         Text(
                           '${fixtures[index].awayTeam.shortName}',
-                          style: TextStyle(
-                              fontWeight: fixtures[index].awayTeam.hasWon
-                                  ? FontWeight.bold
-                                  : FontWeight.normal),
+                          style: fixtures[index].awayTeam.hasWon
+                              ? Theme.of(context).textTheme.headline5
+                              : Theme.of(context).textTheme.headline4,
                         ),
                       ],
                     ),
-                    trailing: CircleAvatar(
-                      radius: 20,
-                      child: Icon(
-                        Icons.done,
+                    trailing: Container(
+                      width: 100,
+                      child: CircleAvatar(
+                        radius: 20,
+                        child: Icon(
+                          Icons.done,
+                        ),
                       ),
                     ),
                   ),

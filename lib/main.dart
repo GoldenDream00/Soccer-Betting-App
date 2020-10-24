@@ -10,6 +10,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline4: TextStyle(
+                fontSize: 17,
+                letterSpacing: 1,
+              ),
+              headline5: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1,
+              ),
+            ),
+      ),
       title: 'Demo',
       home: MyHomePage(),
     );
@@ -63,7 +77,10 @@ class _MyHomePageState extends State<MyHomePage> {
     _teams.shuffle();
     for (var i = 0; i < _teams.length / 2; i++) {
       _fixtures.add(
-        Fixture(homeTeam: _teams[(i * 2)], awayTeam: _teams[(i * 2) + 1]),
+        Fixture(
+          homeTeam: _teams[(i * 2)],
+          awayTeam: _teams[(i * 2) + 1],
+        ),
       );
     }
     setState(() {
@@ -75,15 +92,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My score $myScore'),
+        title: Text('My score: $myScore points'),
         actions: [],
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           !flag
-              ? RaisedButton(
-                  child: Text('PLAY'),
-                  onPressed: _shuffleAndStart,
+              ? Container(
+                  alignment: Alignment.center,
+                  child: RaisedButton(
+                    child: Text('PLAY'),
+                    onPressed: _shuffleAndStart,
+                  ),
                 )
               : Container(
                   height: 700,
